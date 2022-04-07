@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!--Javascript-->
+  <script src="pro168_buttons.js"></script>
+
+  <!--CSS Stylesheet-->
+  <link rel="stylesheet" href="pro168_stye.css">
+</head>
+<body  style="margin : 0px; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; 
+    sourceWidth:1280; sourceHeight:960; 
+    displayWidth: 1280; displayHeight: 960; 
+    debugUIEnabled: false;" gesture-detector create-buttons>
+
+        <!-- Camera -->
+        <a-entity camera></a-entity>
+
+        <!--Assets Management-->
+        <a-assets>
+            <a-asset-item id="toy-model" src="teddy_bears/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <!--Pattern Marker-->
+        <a-marker id="toy-marker" type="pattern" url="pattern-toy.patt" cursor="rayOrigin: mouse">
+
+            <a-entity id="toy-3D-model" position="-3.2 0 0" scale="0.3 0.3 0.3" gltf-model="#toy-model" gesture-handler></a-entity>
+
+            <!--Description-->
+            <a-plane position="0 0 0" width="1.5" height="1.5" rotation="-90 0 0">
+                <a-plane position="0 0.89 0.02" rotation="0 0 0" width="1.49" height="0.3" color="#F0C30F">
+                    <a-entity position="0 0 0.1" rotation="0 0 0" text="font: monoid; value:CUTE PLUSH TEADY BEARS; color:black; width:1.8; height:1; align:center"></a-entity>
+                </a-plane>
+
+                <a-entity position="0 0 0.1" rotation="0 0 0" text="font: monoid; value:Small size teddy bears in balck and white.Made out of non-toxic polyester and fur fabrics of good quality.Good Quality // Type-Teddy Bear // Package Content-1.For someone special; color:black; width:2; align:center"></a-entity>
+            </a-plane>
+        </a-marker>
+
+         <!-- Button Main Div -->
+         <div id="button-div"></div>
+    </a-scene>
+
+</body>
+</html>
